@@ -1,0 +1,29 @@
+func print(arg: char*) -> void {
+	var entry: Label = "@fn_print";
+	var asm: Code = "@fn_print:
+	li r0, 2000
+	stio r7, 2, r0
+	li r0, 1
+	stio r7, 3, r0
+	ldio r0, r7, 2
+	ldio r1, r7, 3
+	add r0, r0, r1
+	stio r7, 4, r0
+	ldio r0, r7, 1
+	ldio r1, r7, 4
+	st r1, r0
+	li r0, 2000
+	stio r7, 5, r0
+	li r0, 1
+	stio r7, 6, r0
+	ldio r0, r7, 6
+	ldio r1, r7, 5
+	st r1, r0
+	addi r0, r7, -1
+	ldind r0, r0
+	ldind r7, r7
+	j r0
+
+";
+}
+
