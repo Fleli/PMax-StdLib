@@ -1,7 +1,3 @@
-struct (int, int) {
-	int f0;
-	int f1;
-}
 
 func __stdlib_mod(x: int, m: int) -> int {
 	var entry: Label = "@fn___stdlib_mod";
