@@ -1,0 +1,45 @@
+
+func __stdlib_mul(a: int, b: int) -> int {
+    
+    var p = 0;
+    
+    while a > 0 {
+        p @+= b;
+        a @-= 1;
+    }
+    
+    return p;
+    
+}
+
+func __stdlib_div(a: int, b: int) -> int {
+    
+    var r = 0;
+    
+    while (a >= 0) {
+        r @+= 1;
+        a @-= b;
+    }
+    
+    return r - 1;
+    
+}
+
+func __stdlib_mod(a: int, b: int) -> int {
+    
+    // "Wtf? Evil recursion hack" - Torgeir Lysen
+    // "Mest sofistikerte algoritmen skrevet i PMax" - Frederik Egelund Edvardsen 4. April 2024
+    
+    if (a < b) {
+        return a;
+    }
+    
+    var c = __stdlib_mod(a, b+b);
+    
+    if (c >= b) {
+        return c-b; 
+    }
+    
+    return c;
+    
+}

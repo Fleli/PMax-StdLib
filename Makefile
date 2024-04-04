@@ -1,5 +1,4 @@
 
-INCLUDE = "/opt/cpm/libraries/pmax-packages"
 ASMFILE = "Stdlib"
 PROFILECOMPILER = #--profile
 EMITINTERMEDIATE = #--emit-offsets --emit-tac --emit-pil
@@ -8,4 +7,4 @@ INCLUDECOMMENTS = #--include-comments
 
 all:
 	@echo "Building ..."
-	pmax build --target-name $(ASMFILE) --include $(INCLUDE) $(PROFILECOMPILER) $(EMITINTERMEDIATE) $(INCLUDECOMMENTS) --as-library
+	pmax build --target-name $(ASMFILE) $(PROFILECOMPILER) $(EMITINTERMEDIATE) $(INCLUDECOMMENTS) --as-library

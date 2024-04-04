@@ -2,3 +2,5 @@
 // Copyright (c) Frederik Edvardsen
 // Created 4.4.2024
 
+// The trap frame address is used to request syscalls from the OS
+macro TRAPFRAMEADDRESS = 2000;
