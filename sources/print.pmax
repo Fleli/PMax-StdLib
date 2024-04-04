@@ -1,4 +1,5 @@
 
+// Print a string
 func print(arg: char*) {
     
     // Set the argument of the print request
