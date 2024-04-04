@@ -1,4 +1,9 @@
 
+struct __stdlib_T {
+    var f0: int;
+    var f1: int;
+}
+
 func __stdlib_mul(a: int, b: int) -> int {
     
     var p = 0;
@@ -12,34 +17,40 @@ func __stdlib_mul(a: int, b: int) -> int {
     
 }
 
-func __stdlib_div(a: int, b: int) -> int {
-    
-    var r = 0;
-    
-    while (a >= 0) {
-        r @+= 1;
-        a @-= b;
-    }
-    
-    return r - 1;
-    
+func __stdlib_mod(a: int, b: int) -> int {
+    return __stdlib_divWithRemainder(a, b, 0, 0).f0;
 }
 
-func __stdlib_mod(a: int, b: int) -> int {
+func __stdlib_div(a: int, b: int) -> int {
+    return __stdlib_divWithRemainder(a, b, 0, 0).f1;
+}
+
+func __stdlib_divWithRemainder(a: int, b: int, c: int, d: int) -> __stdlib_T {
     
     // "Wtf? Evil recursion hack" - Torgeir Lysen
     // "Mest sofistikerte algoritmen skrevet i PMax" - Frederik Egelund Edvardsen 4. April 2024
     
+    var t: __stdlib_T;
+    
     if (a < b) {
-        return a;
+        
+        t.f0 = a;
+        t.f1 = c;
+        
+    } else {
+        
+        if (d <= -d) {
+            d = 1;
+        }
+        
+        t = __stdlib_divWithRemainder(a, b+b, t.f1, d+d);
+        
+        if (t.f0 >= b) {
+            t.f0 @-= b;
+            t.f1 @+= d;
+        }
+        
     }
     
-    var c = __stdlib_mod(a, b+b);
-    
-    if (c >= b) {
-        return c-b; 
-    }
-    
-    return c;
-    
+    return t;
 }
