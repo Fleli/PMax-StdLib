@@ -1,7 +1,7 @@
 
 ASMFILE = "Stdlib"
 PROFILECOMPILER = #--profile
-EMITINTERMEDIATE = #--emit-offsets --emit-tac --emit-pil
+EMITINTERMEDIATE = --emit-offsets --emit-tac --emit-pil
 
 all:
 	@echo "Building ..."
